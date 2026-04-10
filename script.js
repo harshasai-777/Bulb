@@ -1,25 +1,20 @@
-const toggleBtn = document.getElementById("toggleBtn");
+const button = document.getElementById("toggleBtn");
 const bulbIcon = document.getElementById("bulbIcon");
-const pullChain = document.getElementById("pullChain");
 
-toggleBtn.addEventListener("click", () => {
-    pullChain.classList.remove("pulling");
-    void pullChain.offsetWidth;
-    pullChain.classList.add("pulling");
+let isOn = false;
 
-    const isLightMode = document.body.classList.toggle("light-mode");
+button.addEventListener("click", function () {
+    isOn = !isOn;
 
-    if (isLightMode) {
+    if (isOn) {
+        document.body.classList.add("light-mode");
         bulbIcon.classList.remove("ri-lightbulb-line");
         bulbIcon.classList.add("ri-lightbulb-flash-fill");
-        toggleBtn.textContent = "Off";
+        button.textContent = "Turn Off";
     } else {
+        document.body.classList.remove("light-mode");
         bulbIcon.classList.remove("ri-lightbulb-flash-fill");
         bulbIcon.classList.add("ri-lightbulb-line");
-        toggleBtn.textContent = "On";
+        button.textContent = "Turn On";
     }
-});
-
-pullChain.addEventListener("animationend", () => {
-    pullChain.classList.remove("pulling");
 });
